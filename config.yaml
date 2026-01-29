@@ -1,0 +1,225 @@
+SETTINGS:
+    # token discord sử dụng cho tác vụ nhấn reaction v.v., để lấy thông tin emoji
+    DISCORD_TOKEN_FOR_PARSING: ""
+    # proxy để phân tích. định dạng: username:password@ip:port
+    PROXY_FOR_PARSING: ""
+
+    # số lượng luồng đồng thời
+    THREADS: 5
+
+    # số lần thử lại cho BẤT KỲ hành động nào
+    ATTEMPTS: 5
+
+    # xáo trộn tài khoản theo thứ tự ngẫu nhiên
+    SHUFFLE_ACCOUNTS: true
+
+    # phạm vi tài khoản.
+    # MẶC ĐỊNH: [0, 0] - tất cả tài khoản
+    # [3, 5] - chỉ tài khoản 3 4 5
+    # [7, 7] - chỉ tài khoản 7
+    ACCOUNTS_RANGE: [0, 0]
+
+    # CHỈ HOẠT ĐỘNG NẾU ACCOUNTS_RANGE LÀ [0, 0]
+    # tài khoản chính xác để sử dụng.
+    # MẶC ĐỊNH: [] - tất cả tài khoản
+    # Ví dụ: [1, 4, 6] - bot sẽ chỉ sử dụng tài khoản 1, 4 và 6
+    EXACT_ACCOUNTS_TO_USE: []
+
+    # tạm dừng giữa các lần thử
+    PAUSE_BETWEEN_ATTEMPTS: [1, 2]
+
+    # tạm dừng tính bằng giây giữa các tài khoản
+    RANDOM_PAUSE_BETWEEN_ACCOUNTS: [1, 2]
+
+    # tạm dừng tính bằng giây giữa các hành động
+    RANDOM_PAUSE_BETWEEN_ACTIONS: [1, 2]
+
+    # tạm dừng ngẫu nhiên trước khi bắt đầu mỗi tài khoản
+    # để đảm bảo rằng tất cả tài khoản sẽ được bắt đầu vào các thời điểm khác nhau
+    RANDOM_INITIALIZATION_PAUSE: [1, 2]
+
+    # sử dụng ảnh đại diện ngẫu nhiên cho tác vụ thay đổi ảnh đại diện
+    RANDOM_PROFILE_PICTURES: false
+
+    # Tự động khởi động lại sau khi hoàn thành (thay vì quay lại menu)
+    AUTO_RESTART: true
+    
+    # Thời gian chờ trước khi khởi động lại (giây)
+    RESTART_DELAY: 300
+
+
+AI_CHATTER:
+    # Chế độ đa kênh: true = chạy nhiều kênh cùng lúc, false = chỉ dùng CHANNELS[0]
+    MULTI_CHANNEL_MODE: false
+    
+    # Cấu hình chung cho tất cả kênh (sẽ được override bởi cấu hình riêng nếu có)
+    # nếu bot được hỏi điều gì đó, xác suất mà nó sẽ trả lời hoặc bỏ qua câu hỏi là bao nhiêu
+    ANSWER_PERCENTAGE: 80
+
+    # Bao nhiêu phần trăm tin nhắn sẽ là TRẢ LỜI cho tin nhắn của người dùng khác
+    # phần còn lại của tin nhắn sẽ chỉ được gửi vào chat.
+    # nếu 0, bot sẽ không trả lời ai
+    # nếu 100, bot sẽ chỉ gửi trả lời cho tin nhắn của người dùng khác.
+    REPLY_PERCENTAGE: 55
+
+    # số lượng tin nhắn để gửi cho mỗi kênh
+    MESSAGES_TO_SEND_PER_ACCOUNT: [300, 500]
+
+    # tạm dừng sau khi nhận phản hồi từ chatgpt và trước khi gửi tin nhắn đến discord
+    PAUSE_BEFORE_MESSAGE: [15, 35]
+    
+    # chế độ chọn AI: "random", "chatgpt", "grok", "gemini", "alternate"
+    # random: chọn ngẫu nhiên mỗi tin nhắn
+    # chatgpt: chỉ dùng ChatGPT
+    # grok: chỉ dùng Grok (không phân biệt hoa thường)
+    # gemini: chỉ dùng Gemini
+    # alternate: luân phiên giữa ChatGPT, Grok và Gemini
+    AI_SELECTION_MODE: "grok" 
+    
+    # từ cấm - bot sẽ không trả lời những tin nhắn chứa từ này
+    FORBIDDEN_WORDS: [
+        "hi", "hello", "good day", "hey", "gm", "greetings", "howdy", "sup", "yo",
+        "what's up", "what's good", "wassup", "how are you doing", "how are you",
+        "how's it going", "how's everything", "how's life", "how's your day going",
+        "how's your day been", "how have you been", "what's new with you", "what's happening"
+    ]
+
+    # Danh sách ID các bot/account cần bỏ qua (không trả lời)
+    BOT_IDS: [
+        "837144457194373160",
+        "1321300768497733654"
+    ]
+
+    # Tag đánh dấu tin nhắn của AI (để tránh tự trả lời)
+    # Ví dụ: "[AI]" hoặc để trống nếu không muốn dùng tag
+    AI_MSG_TAG: ""
+    
+    # Danh sách các kênh để chat (xử lý lần lượt)
+    # Mỗi kênh có thể có cấu hình riêng hoặc dùng cấu hình chung ở trên
+    CHANNELS:
+        - GUILD_ID: "1375018012536471593"
+          CHANNEL_ID: "1375067214977437767"
+          PAUSE_BETWEEN_MESSAGES: [1800, 2400] # Cấu hình riêng cho kênh này
+          # Các cấu hình khác sẽ dùng từ cấu hình chung nếu không được chỉ định
+          
+        - GUILD_ID: "890224574761926756"
+          CHANNEL_ID: "890224574761926762"
+          PAUSE_BETWEEN_MESSAGES: [100, 2000]  # Cấu hình riêng cho kênh này
+          
+        - GUILD_ID: "1229940893642129438"
+          CHANNEL_ID: "1375698391983456308"
+          PAUSE_BETWEEN_MESSAGES: [10, 400]  # Cấu hình riêng cho kênh này
+          
+    # Cấu hình 0 (để tương thích ngược - chỉ dùng nếu MULTI_CHANNEL_MODE = false)
+    GUILD_ID: "1375018012536471593"
+    CHANNEL_ID: "1375067214977437767"
+    PAUSE_BETWEEN_MESSAGES: [1800, 2400]
+
+
+DM_CHATTER:
+    # Bật/tắt tính năng trả lời tin nhắn DM
+    ENABLE_DM_RESPONSES: false
+    
+    # Xác suất trả lời tin nhắn DM (0-100)
+    DM_ANSWER_PERCENTAGE: 80
+    
+    # Tạm dừng giữa các tin nhắn DM
+    PAUSE_BETWEEN_DM_MESSAGES: [124, 155]
+    
+    # Tạm dừng trước khi gửi tin nhắn DM
+    PAUSE_BEFORE_DM_MESSAGE: [15, 35]
+    
+    # Chế độ AI cho DM: "random", "chatgpt", "grok", "alternate"
+    AI_SELECTION_MODE: "grok"
+    
+    # Từ cấm cho DM (có thể khác với AI_CHATTER)
+    FORBIDDEN_WORDS: [
+        "hi", "hello", "good day", "hey", "gm", "greetings", "howdy", "sup", "yo"
+    ]
+
+
+REST_MODE:
+    # Bật/tắt tính năng nghỉ ngơi khi kênh im lặng
+    ENABLE_REST_MODE: true
+    
+    # Thời gian chờ sau tin nhắn cuối cùng trước khi nghỉ ngơi (phút)
+    SILENCE_TIMEOUT_MINUTES: 5
+    
+    # Thời gian nghỉ ngơi khi không có tin nhắn mới (phút)
+    REST_DURATION_MINUTES: 10
+    
+    # Kiểm tra tin nhắn mới mỗi bao lâu khi đang nghỉ ngơi (giây)
+    REST_CHECK_INTERVAL_SECONDS: 30
+    
+    # Thời gian tối đa nghỉ ngơi liên tục (phút) - 0 = không giới hạn
+    MAX_REST_DURATION_MINUTES: 60
+    
+
+MESSAGE_SENDER:
+    # id server discord nơi bot sẽ gửi tin nhắn
+    GUILD_ID: "1298000367283601428"
+
+    # id kênh discord nơi bot sẽ gửi tin nhắn
+    CHANNEL_ID: "1298000367283601431"
+    # xóa tin nhắn ngay lập tức sau khi gửi
+    DELETE_MESSAGE_INSTANTLY: false
+
+    # gửi tin nhắn ngẫu nhiên
+    SEND_MESSAGES_RANDOMLY: false
+
+    # số lượng tin nhắn để gửi CHO MỖI TÀI KHOẢN. VẬY MỖI TÀI KHOẢN SẼ GỬI SỐ LƯỢNG TIN NHẮN NÀY
+    NUMBER_OF_MESSAGES_TO_SEND: 3000
+
+    # tạm dừng giữa các tin nhắn
+    PAUSE_BETWEEN_MESSAGES: [124, 140]
+
+
+CHAT_GPT:
+    # danh sách api key. bot sẽ sử dụng api key ngẫu nhiên cho mỗi tin nhắn.
+    API_KEYS: ["sk-proj-"]
+    # mô hình chatgpt để sử dụng. https://platform.openai.com/docs/models
+    MODEL: "gpt-4o"
+
+    # ở một số quốc gia bạn có thể cần sử dụng proxy để truy cập chatgpt.
+    # mặc định là trống. định dạng: username:password@ip:port
+    PROXY_FOR_CHAT_GPT: ""
+
+
+GROK:
+    # danh sách api key cho Grok AI. bot sẽ sử dụng api key ngẫu nhiên cho mỗi tin nhắn.
+    API_KEYS: ["xai-xxx"]
+    # mô hình grok để sử dụng
+    MODEL: "grok-3"
+    
+    # proxy để truy cập grok (tùy chọn)
+    PROXY: ""
+
+
+GEMINI:
+    # danh sách api key cho Gemini AI
+    API_KEYS: ["AIxxxx"]
+    # mô hình gemini để sử dụng
+    MODEL: "gemini-2.0-flash-exp"
+    
+    # proxy để truy cập gemini (tùy chọn)
+    PROXY: ""
+
+
+HCAPTCHA:
+    # Sitekey Discord từ URL bạn cung cấp
+    SITEKEY: "a9b5fb07-92ff-493f-86fe-352a2803b3df"
+    
+    # Proxy để giải captcha (tùy chọn)
+    PROXY: ""
+
+
+CAPTCHA_SERVICES:
+    # API key cho 2captcha service
+    TWOCAPTCHA_API_KEY: ""
+    
+    # API key cho Capsolver service  
+    CAPSOLVER_API_KEY: "CAP-"
+    
+    # Service mặc định để giải captcha: "2captcha", "capsolver", "nocaptcha"
+    # Capsolver hỗ trợ hCaptcha Enterprise tốt hơn
+    DEFAULT_SERVICE: "capsolver"

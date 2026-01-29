@@ -1,0 +1,15 @@
+# Ignore all data by default
+data/*
+# Allow structure placeholders
+!data/.gitkeep
+!data/messages/
+!data/messages/.gitkeep
+!data/pictures/
+!data/pictures/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
+# Secrets
+.env
