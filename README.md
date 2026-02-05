@@ -30,7 +30,7 @@ A comprehensive and powerful Discord automation tool designed for managing multi
     *   **Github Version Check**: Automatically checks for updates.
     *   **Concurrency Locking**: Prevents multiple accounts from spamming the same guild simultaneously.
 
-## Once it reaches 100 stars, I will upload the full version to you, or you can use it earlier for 10 USDT by messaging me directly.
+## Once it reaches 100 stars, I will upload the full version to you, or you can use it earlier for 10 USDT by messaging me directly. : https://discord.gg/kJhzg65B
 
 ## 📋 Requirements
 
